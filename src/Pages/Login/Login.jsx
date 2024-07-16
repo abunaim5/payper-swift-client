@@ -14,8 +14,8 @@ const Login = () => {
                     <Text fontSize='xl' fontWeight={600} mb={6}>Sign In</Text>
                     <form>
                         <FormControl>
-                            <FormLabel>Email address</FormLabel>
-                            <Input type='email' />
+                            <FormLabel>Email</FormLabel>
+                            <Input type='email' placeholder='Your Email' />
                         </FormControl>
                         <Box position='relative' padding={6}>
                             <Divider />
@@ -24,16 +24,16 @@ const Login = () => {
                             </AbsoluteCenter>
                         </Box>
                         <FormControl mb={4}>
-                            <FormLabel>Phone Number</FormLabel>
-                            <Input type='number' />
+                            <FormLabel>Phone</FormLabel>
+                            <Input type='number' placeholder='Your Number' />
                         </FormControl>
                         <FormControl>
                             <FormLabel>Password</FormLabel>
-                            <Input type='number' />
+                            <Input type='number' placeholder='Password' />
                         </FormControl>
                         <Button type='submit' colorScheme='blue' w='full' mt={6}>Sign In</Button>
                     </form>
-                    <Text mt={6}>Don&apos;t have an account? <Link>Sign Up</Link></Text>
+                    <Text mt={6}>Don&apos;t have an account? <Link to='/register'>Sign Up</Link></Text>
                 </Box>
             </Card>
         </Box>

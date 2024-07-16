@@ -2,9 +2,10 @@ import { Box, Button, Card, FormControl, FormErrorMessage, FormLabel, Input, Rad
 import { useMutation } from "@tanstack/react-query";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { FaSwift } from "react-icons/fa";
+import { FaFacebook, FaLinkedin, FaPinterest, FaSwift, FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import loginBg from '../../assets/images/background.svg'
 
 const Register = () => {
     const [value, setValue] = React.useState('user');
@@ -20,7 +21,7 @@ const Register = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
-        const {name, email, phone, password} = data;
+        const { name, email, phone, password } = data;
         const userInfo = {
             name: name,
             email: email,
@@ -33,11 +34,25 @@ const Register = () => {
     };
 
     return (
-        <Box pb={6}>
-            <Card flexDir='row'>
-                <Box w='50%' bg='lightblue' px={6} py={8} borderLeftRadius='md'>
-                    <Text fontSize='4xl'><FaSwift /></Text>
-                    <Text fontSize='xl' fontWeight={600} mt={8}>Welcome to PayperSwift</Text>
+        <Box w='full' minH='100vh' display='flex' alignItems='center' justifyContent='center' my={{ base: 10, '2xl': 0 }}>
+            <Card flexDir='row' w='65%' h='fit-content'>
+                <Box w='50%' bg={`url(${loginBg})`} bgRepeat='no-repeat' bgPos='center' bgSize='cover' borderLeftRadius='md'>
+                    <Box w='full' h='full' display='flex' flexDir='column' justifyContent='space-between' textColor='white' className="bg-[#2F2CD8]/65" px={6} py={8} borderLeftRadius='md'>
+                        <Box>
+                            <Text fontSize='4xl'><FaSwift /></Text>
+                            <Text fontSize='xl' fontWeight={600} mt={8}>Welcome to PayperSwift</Text>
+                        </Box>
+                        <Box>
+                            <Box display='flex' alignItems='center' gap={4}>
+                                <FaFacebook cursor='pointer' />
+                                <FaTwitter cursor='pointer' />
+                                <FaLinkedin cursor='pointer' />
+                                <FaPinterest cursor='pointer' />
+                            </Box>
+                            <Text fontSize='sm' mt={6}>Have an issue with login and register?</Text>
+                            <Text fontSize='sm' mt={1} cursor='pointer'>Privacy Policy</Text>
+                        </Box>
+                    </Box>
                 </Box>
                 <Box w='50%' px={6} py={8}>
                     <Text fontSize='xl' fontWeight={600} mb={6}>Sign Up</Text>
@@ -68,7 +83,7 @@ const Register = () => {
                             <Input {...register("password", { required: 'Password is required.' })} type='number' placeholder='Password' autoComplete='pass' />
                             <FormErrorMessage>{errors.password && errors.password?.message}</FormErrorMessage>
                         </FormControl>
-                        <Button type='submit' colorScheme='blue' w='full' mt={6}>Sign Up</Button>
+                        <Button type='submit' colorScheme='primary' w='full' mt={6}>Sign Up</Button>
                     </form>
                     <Text mt={6}>Already have an account? <Link to='/login'>Sign In</Link></Text>
                 </Box>

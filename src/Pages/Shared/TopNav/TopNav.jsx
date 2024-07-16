@@ -4,7 +4,7 @@ import { FaRegBell } from "react-icons/fa";
 
 const TopNav = () => {
     return (
-        <Box px={8} py={5} display='flex' alignItems='center' justifyContent='space-between'>
+        <Box py={5} display='flex' alignItems='center' justifyContent='space-between'>
             <Box>
                 <InputGroup w={96}>
                     <Input type='search' name='search' placeholder='Search Here' autoComplete="search" />

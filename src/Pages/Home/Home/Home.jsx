@@ -1,9 +1,10 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 
 const Home = () => {
     return (
         <Box>
-            Welcome PayperSwift Finance.
+            <Text fontSize='xl' fontWeight={700}>Dashboard</Text>
+            <Text>Welcome PayperSwift Finance.</Text>
         </Box>
     );
 };

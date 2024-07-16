@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import SectionHeading from "../../Components/SectionHeading/SectionHeading";
 
-const WAllet = () => {
+const Wallet = () => {
     return (
         <Box>
             <SectionHeading heading='Wallet' />
@@ -23,11 +23,11 @@ const WAllet = () => {
                 <Card w='30%' h='fit-content'>
                     <CardBody>
                         <Text mb={1}>Total Balance</Text>
-                        <Text fontSize='2xl' fontWeight={700} mb={4}>$524,46</Text>
+                        <Text fontSize='3xl' fontWeight={500} mb={4}>$124,46</Text>
                         <Divider />
                         <Box display='flex' alignItems='center' justifyContent='space-between' mt={4}>
                             <Text>Credit Limits</Text>
-                            <Text fontSize='lg' fontWeight={700}>$25000</Text>
+                            <Text fontSize='lg' fontWeight={600}>$25000</Text>
                         </Box>
                     </CardBody>
                 </Card>
@@ -45,22 +45,22 @@ const WAllet = () => {
                             </Thead>
                             <Tbody>
                                 <Tr>
-                                    <Td>inches</Td>
+                                    <Td>Cash In</Td>
                                     <Td>millimetres (mm)</Td>
                                     <Td>millimetres (mm)</Td>
-                                    <Td isNumeric>25.4</Td>
+                                    <Td isNumeric>$900</Td>
                                 </Tr>
                                 <Tr>
-                                    <Td>feet</Td>
+                                    <Td>Send Money</Td>
                                     <Td>centimetres (cm)</Td>
                                     <Td>centimetres (cm)</Td>
-                                    <Td isNumeric>30.48</Td>
+                                    <Td isNumeric>$500</Td>
                                 </Tr>
                                 <Tr>
-                                    <Td>yards</Td>
+                                    <Td>Cash Out</Td>
                                     <Td>metres (m)</Td>
                                     <Td>metres (m)</Td>
-                                    <Td isNumeric>0.91444</Td>
+                                    <Td isNumeric>$700</Td>
                                 </Tr>
                             </Tbody>
                         </Table>
@@ -71,4 +71,4 @@ const WAllet = () => {
     );
 };
 
-export default WAllet;
+export default Wallet;

@@ -1,27 +1,38 @@
 import { Box, Button, Text } from "@chakra-ui/react";
-import { FaWallet } from "react-icons/fa";
+import { FaUser, FaWallet } from "react-icons/fa";
 import { MdDashboard } from "react-icons/md";
+import { NavLink } from "react-router-dom";
 
 const userRouteLinks = [
     {
         name: 'Dashboard',
-        icon: MdDashboard
+        icon: MdDashboard,
+        route: '/'
+    },
+    {
+        name: 'Profile',
+        icon: FaUser,
+        route: '/wallet'
     },
     {
         name: 'Wallet',
-        icon: FaWallet
+        icon: FaWallet,
+        route: '/wallet'
     },
     {
         name: 'Send Money',
-        icon: MdDashboard
+        icon: MdDashboard,
+        route: '/send-money'
     },
     {
         name: 'Cash Out',
-        icon: MdDashboard
+        icon: MdDashboard,
+        route: '/cash-out'
     },
     {
         name: 'Cash In',
-        icon: MdDashboard
+        icon: MdDashboard,
+        route: '/cash-in'
     },
 ]
 
@@ -31,7 +42,7 @@ const LeftNav = () => {
             <Text fontSize='xl' fontWeight={800} textColor='white'>PayperSwift</Text>
             <Box w='full' display='flex' flexDir='column' gap={4}>
                 {
-                    userRouteLinks.map((link, idx) => <Button key={idx} w='full' leftIcon={<link.icon />} variant='solid' justifyContent='left'>
+                    userRouteLinks.map((link, idx) => <Button as={NavLink} to={link.route} key={idx} w='full' leftIcon={<link.icon />} variant='solid' justifyContent='left'>
                         {link.name}
                     </Button>)
                 }

@@ -1,10 +1,13 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
+import SectionHeading from "../../../Components/SectionHeading/SectionHeading";
 
 const Home = () => {
     return (
         <Box>
-            <Text fontSize='xl' fontWeight={700}>Dashboard</Text>
-            <Text>Welcome PayperSwift Finance.</Text>
+            <SectionHeading heading='Dashboard' />
+            <Box>
+                
+            </Box>
         </Box>
     );
 };

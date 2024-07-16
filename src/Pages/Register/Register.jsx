@@ -8,8 +8,8 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const Register = () => {
     const [value, setValue] = React.useState('user');
-    console.log(value);
     const axiosSecure = useAxiosSecure();
+    const date = new Date().toLocaleDateString();
 
     const { mutate } = useMutation({
         mutationFn: async (userInfo) => {
@@ -19,7 +19,18 @@ const Register = () => {
     })
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        const {name, email, phone, password} = data;
+        const userInfo = {
+            name: name,
+            email: email,
+            phone: phone,
+            role: value,
+            createDate: date,
+            password: password
+        }
+        mutate(userInfo);
+    };
 
     return (
         <Box pb={6}>

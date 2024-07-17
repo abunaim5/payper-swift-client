@@ -1,20 +1,23 @@
 import { Box, Button, Card, FormControl, FormErrorMessage, FormLabel, Input, Radio, RadioGroup, Stack, Text } from "@chakra-ui/react";
 import { useMutation } from "@tanstack/react-query";
-import React from "react";
 import { useForm } from "react-hook-form";
 import { FaFacebook, FaLinkedin, FaPinterest, FaSwift, FaTwitter } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { Link, useNavigate } from "react-router-dom";
+// import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import loginBg from '../../assets/images/background.svg'
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import React from "react";
 
 const Register = () => {
     const [value, setValue] = React.useState('user');
-    const axiosSecure = useAxiosSecure();
+    // const axiosSecure = useAxiosSecure();
+    const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic();
     const date = new Date().toLocaleDateString();
 
-    const { mutate } = useMutation({
+    const { mutate, isSuccess, reset, data } = useMutation({
         mutationFn: async (userInfo) => {
-            const res = await axiosSecure.post('/users', userInfo);
+            const res = await axiosPublic.post('/users', userInfo);
             return res;
         }
     })
@@ -28,10 +31,22 @@ const Register = () => {
             phone: phone,
             role: value,
             createDate: date,
-            password: password
+            password: password,
+            approval: 'pending'
         }
         mutate(userInfo);
+
     };
+
+    if (isSuccess) {
+        if (data.data !== "User already exist.") {
+            alert('Please wait for admin approval.');
+            navigate('/login')
+        } else {
+            alert('User already exist.');
+        }
+        reset();
+    }
 
     return (
         <Box w='full' minH='100vh' display='flex' alignItems='center' justifyContent='center' my={{ base: 10, '2xl': 0 }}>
@@ -80,7 +95,7 @@ const Register = () => {
                         </RadioGroup>
                         <FormControl isInvalid={errors.password}>
                             <FormLabel>Password</FormLabel>
-                            <Input {...register("password", { required: 'Password is required.' })} type='number' placeholder='Password' autoComplete='pass' />
+                            <Input {...register("password", { required: 'Password is required.' })} type='password' placeholder='Password' autoComplete='pass' />
                             <FormErrorMessage>{errors.password && errors.password?.message}</FormErrorMessage>
                         </FormControl>
                         <Button type='submit' colorScheme='primary' w='full' mt={6}>Sign Up</Button>

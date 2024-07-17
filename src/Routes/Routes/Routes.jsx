@@ -4,6 +4,7 @@ import Home from "../../Pages/Home/Home/Home";
 import Wallet from "../../Pages/Wallet/Wallet";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Register/Register";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -13,7 +14,7 @@ const router = createBrowserRouter([
       children: [
         {
           index: true,
-          element: <Home />
+          element: <PrivateRoute><Home /></PrivateRoute>
         },
         {
           path: '/login',
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
         },
         {
           path: '/wallet',
-          element: <Wallet />
+          element: <PrivateRoute><Wallet /></PrivateRoute>
         },
       ],
     },
